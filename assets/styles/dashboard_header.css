@@ -1,0 +1,104 @@
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0.25rem 0.5rem; 
+    height: clamp(48px, 4.5vh, 56px); 
+    min-height: 48px;
+    overflow: visible;
+}
+
+
+
+.dashboard-header-icon {
+    max-width: clamp(20px, 3.2vw, 22px) !important;
+    height: clamp(20px, 3.2vw, 22px) !important;
+    margin-right: 0.2rem !important; 
+    display: inline-block;
+}
+
+
+.dashboard-header-welcome {
+    font-size: clamp(0.7rem, 1.6vw, 0.9rem);
+    color: #fff;
+    margin-left: 0.1rem;
+    font-weight: 500;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-header-welcome h2 {
+    font-size: 0.9rem !important;
+    margin: 0 !important;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.1;
+}
+
+.dashboard-header-welcome img {
+    height: 1.375rem !important; 
+    width: auto !important;
+    margin-left: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dashboard-header-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    margin-left: 0.1rem;
+}
+
+.dashboard-header-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none !important;
+}
+
+.dashboard-header-logo-btn {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    line-height: 0;
+    box-shadow: none !important;
+}
+
+.dashboard-header-logo-btn:focus,
+.dashboard-header-logo-btn:active,
+.dashboard-header-logo-btn:hover {
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.dashboard-header-logo-btn img,
+.dashboard-header-logo-btn .dashboard-header-icon {
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: clamp(22px, 3.2vw, 32px) !important;
+    width: auto !important;
+}
+
+.dashboard-header-logo-btn img,
+#logo-button img {
+    height: auto !important;
+    max-height: clamp(22px, 4.5vh, 36px) !important; 
+    width: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    display: block;
+}

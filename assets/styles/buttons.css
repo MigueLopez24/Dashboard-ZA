@@ -1,0 +1,74 @@
+.next-page-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 4rem;
+    z-index: 99999 !important;
+    background: rgba(0, 0, 0, 0.65); 
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0.15rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    outline: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    transition: transform .12s ease, background .12s ease, opacity .12s ease;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.next-page-btn:hover {
+    transform: scale(1.06);
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.next-page-btn img {
+    margin: 0;
+    padding: 0;
+    display: block;
+    height: 1.25rem !important;
+    width: 1.25rem !important;
+}
+
+@media (max-width: 991px) {
+    .next-page-btn {
+        bottom: 0.7rem;
+        right: 0.7rem;
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+    .next-page-btn img { height: 1rem !important; width: 1rem !important; }
+}
+
+#page-content {
+	overflow: hidden;
+	position: relative;
+}
+
+.slide-left-in {
+	animation: slideLeftIn 480ms cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.slide-left-out {
+	animation: slideLeftOut 320ms cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes slideLeftIn {
+	from { transform: translateX(100%); opacity: 0; }
+	to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideLeftOut {
+	from { transform: translateX(0);    opacity: 1; }
+	to   { transform: translateX(-25%); opacity: 0; }
+}
+
+#page-content > * {
+	will-change: transform, opacity;
+}

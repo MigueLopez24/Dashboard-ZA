@@ -1,0 +1,71 @@
+.main-graph-pie {
+    width: 100% !important;
+    height: clamp(110px, 12vw, 175px) !important; /* ligero ajuste en el clamp para dar más espacio */
+    min-height: 120px !important; /* aumentado para evitar que el pastel quede cortado */
+    overflow: hidden;
+    padding: 0;
+}
+.main-graph-history {
+    width: 100% !important;
+    height: clamp(120px, 14vw, 170px) !important;
+    max-height: none !important;
+    overflow: hidden;
+}
+
+.storyline-figure, .main-graph-storyline {
+    height: clamp(120px, 16vw, 200px) !important;
+    min-height: 100px !important;
+    overflow: hidden;
+}
+
+.admin-dropdown {
+    color: #000000 !important;
+    font-size: 0.7rem;
+}
+
+.internet-detail-vpn-table {
+    padding: 0.1rem !important;
+    /* No scroll en el body del módulo; permitimos que JS escale el contenido */
+    overflow: visible !important;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* Wrapper interno creado por JS para aplicar transform:scale */
+.internet-detail-vpn-table .vpn-inner {
+    transform-origin: top left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Asegurar que la tabla ocupe todo el ancho del wrapper y columnas se comporten */
+.internet-detail-vpn-table table,
+.internet-detail-vpn-table .table {
+    width: 100% !important;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+/* Truncado en celdas para evitar overflow visual; mostrar tooltip via callbacks si se necesita */
+.internet-detail-vpn-table td,
+.internet-detail-vpn-table th {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0.25rem;
+}
+
+/* Ajustes en móviles para mantener legibilidad */
+@media (max-width: 767px) {
+    .internet-detail-vpn-table td,
+    .internet-detail-vpn-table th {
+        padding: 0.18rem;
+        font-size: 0.85rem;
+    }
+}

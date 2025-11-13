@@ -1,0 +1,89 @@
+/* Contenedor admin: padding coherente con el resto del dashboard */
+.admin-layout-container {
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+/* Dropdowns e inputs en admin ocupan todo el ancho del contenedor */
+.admin-layout-container .admin-dropdown,
+.admin-layout-container input,
+.admin-layout-container .form-control,
+#dropdown-tipo-dispositivo,
+#search-device-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Wrapper centrado y con ancho máximo responsivo para el dropdown principal */
+.admin-dropdown-wrapper {
+    width: min(420px, 72%); 
+    margin: 0 auto;        
+    display: block;
+}
+
+/* El dropdown debe ocupar todo el ancho del wrapper */
+.admin-layout-container .admin-dropdown,
+.admin-dropdown {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Filas de controles (dropdown + búsqueda) compactas y centradas */
+.admin-controls-row {
+    margin-bottom: 0.06rem !important; /* más compacto */
+    gap: 0.06rem;
+    align-items: center;
+}
+
+/* Ajuste fino para que el search quede pegado al dropdown (si están apilados) */
+.admin-layout-container #search-device-input {
+    margin-top: 0.04rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* Reducir gaps generales en admin (filas/card) para un packing más denso */
+.admin-layout-container .row.g-3 {
+    gap: 0.12rem;
+}
+.admin-layout-container .card {
+    margin-bottom: 0.08rem !important;
+}
+
+/* Contenedor de la tabla: mantener scroll interno, pero permitir más espacio para controles al reducir su max-height ligeramente */
+.device-table-scroll {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 0.25rem;
+}
+
+/* Mantener legibilidad pero compacto en tablas/listas */
+.admin-layout-container .device-table-scroll table,
+.admin-layout-container .device-table-scroll .list-group {
+    font-size: 0.88rem;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Pequeños ajustes móviles para mantener compacto el diseño */
+@media (max-width: 767px) {
+    .modal-dialog {
+        max-width: 95% !important;
+        margin: 0.5rem auto;
+    }
+    .device-table-scroll {
+        max-height: calc(100vh - 180px);
+    }
+    .admin-dropdown-wrapper {
+        width: 92%;
+    }
+    .admin-controls-row {
+        margin-bottom: 0.04rem !important;
+        gap: 0.04rem;
+    }
+    .admin-layout-container .card {
+        margin-bottom: 0.06rem !important;
+    }
+}

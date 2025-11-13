@@ -1,0 +1,15 @@
+# Archivos de bytecode y compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Directorios de caché
+# Ignora el directorio 'cache' creado por diskcache
+/cache/
+
+# Entornos virtuales
+.env
+.venv
+env/
+venv/
+.vscode

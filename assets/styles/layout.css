@@ -1,0 +1,256 @@
+/* Global responsive variables & reset */
+:root{
+    --break-sm: 576px;
+    --break-md: 768px;
+    --break-lg: 992px;
+    --base-font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+    --header-h: clamp(48px, 6vh, 72px);
+    --card-gap: 0.1rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Apply base font-size to body containers (keeps existing visual scale but responsive) */
+.main-layout-container,
+.admin-layout-container,
+.internet-detail-layout {
+    font-size: var(--base-font-size);
+    background-color: #1A1A1A;
+    width: 100%;        
+    min-height: 100vh;  
+    padding: 0 !important;
+    overflow: visible !important;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+@media (max-width: 991px) {
+    .main-layout-container,
+    .admin-layout-container,
+    .internet-detail-layout {
+        padding: 0.5rem !important;
+    }
+
+    .main-layout-container > *,
+    .admin-layout-container > *,
+    .internet-detail-layout > * {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Small devices finer padding */
+@media (max-width: 767px) {
+    .main-layout-container,
+    .admin-layout-container,
+    .internet-detail-layout {
+        padding: 0.2rem !important;
+    }
+}
+
+.g-3, .g-4, .g-2, .g-1 {
+    --bs-gutter-x: 0.2rem !important;
+    --bs-gutter-y: var(--card-gap) !important;
+}
+.mb-3, .mb-4, .mb-2, .mb-1 {
+    margin-bottom: 0.12rem !important;
+}
+.p-2, .p-3, .p-1 {
+    padding: 0.12rem !important;
+}
+
+[class*="card"], [class*="Card"],
+[class*="module"], [class*="Module"],
+[class*="panel"], [class*="Panel"],
+[class*="box"], [class*="Box"],
+.card, .module, .panel, .box {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    float: none !important;
+}
+
+.conmutador-card {
+    background-color: transparent !important;
+    border: none !important;
+    min-height: 1.5rem !important; 
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    box-shadow: none !important;
+}
+
+.conmutador-card-compact {
+    background: transparent !important;
+    border: none !important;
+    min-height: 0.75rem !important; 
+    height: 1.125rem !important; 
+    padding: 0 !important;
+    margin-bottom: 0.25rem !important; 
+    box-shadow: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-left: auto; margin-right: auto;
+    flex-shrink: 1;
+    position: static !important;
+    z-index: auto !important;
+    min-width: 0;
+}
+
+/* Nuevo: forzar layout a pantalla completa y evitar scrolls */
+html, body, #app, .main-layout-container {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* evita scroll global (x e y) */
+}
+
+/* Hacemos que el layout principal sea columna flexible para repartir filas proporcionalmente */
+.main-layout-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap);
+    padding: 0 !important;
+}
+
+/* Cada fila directa actúa como una "fila flexible" que puede encoger.
+   min-height:0 es crítico para que flex children puedan reducirse sin provocar overflow. */
+.main-layout-container > .row {
+    flex: 1 1 0; /* crecer y encoger según el espacio disponible */
+    min-height: 0;
+    display: flex;
+    align-items: stretch;
+    gap: var(--card-gap);
+}
+
+/* Las columnas internas (bootstrap .col / tarjetas) deben poder reducir su altura.
+   Cada card ocupa 100% de la altura de su columna y distribuye su contenido verticalmente. */
+.main-layout-container .card,
+.main-layout-container .card.h-100 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+/* El cuerpo de la card toma el espacio restante y evita scroll interno */
+.main-layout-container .card .card-body,
+.main-layout-container .card > .card-body,
+.main-layout-container .card > div.card-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden; /* evitar scroll interno en cards */
+    padding: 0.25rem !important;
+}
+
+/* Ajustes para filas que contienen gráficos: que los gráficos ocupen todo el espacio disponible */
+.main-layout-container dcc-graph,
+.main-layout-container .main-graph-pie,
+.main-layout-container .main-graph-history,
+.main-layout-container .storyline-figure,
+.main-layout-container .main-graph-storyline,
+.main-layout-container .card .p-0 dcc-graph,
+.main-layout-container .card .p-0 .main-graph-pie {
+    height: 100% !important;
+    min-height: 0;
+    max-height: 100%;
+}
+
+/* Asegurar que no haya overflow horizontal por márgenes o paddings grandes */
+body, .main-layout-container, .main-layout-container * {
+    box-sizing: border-box;
+}
+
+/* Mantener los ajustes de padding en pequeños tamaños pero permitiendo el encogimiento */
+@media (max-width: 991px) {
+    .main-layout-container > .row {
+        flex-direction: column;
+    }
+    .main-layout-container .card .card-body {
+        padding: 0.15rem !important;
+    }
+}
+
+/* Remove potential visual "movement" by making paddings consistent and avoiding layout-shifting transitions */
+.main-layout-container .card,
+.main-layout-container .card .card-body {
+    transition: none !important;
+}
+
+/* Ensure direct row children behave as full-width rows and their cols fill available space */
+.main-layout-container > .row,
+.admin-layout-container > .row,
+.internet-detail-layout > .row {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+}
+
+/* Force columns inside main rows to occupy 100% of their grid cell and be stable */
+.main-layout-container > .row > * ,
+.admin-layout-container > .row > * ,
+.internet-detail-layout > .row > * {
+    flex: 1 1 0;       /* crecer y encoger de forma predecible */
+    max-width: 100%;   /* evitar que cambien de ancho */
+    min-width: 0;      /* permite que los hijos se reduzcan correctamente */
+    box-sizing: border-box;
+}
+
+/* Cards must always fill their column and not change ancho por padding/margen */
+.main-layout-container .card,
+.admin-layout-container .card,
+.internet-detail-layout .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Header row must use only the height it needs (no flex grow) */
+.main-layout-container > .row:first-child {
+    flex: 0 0 auto; /* no crecer/encoger con el resto de filas */
+}
+
+/* Cards inside header row should be auto height (ignore global .h-100 there) */
+.main-layout-container > .row:first-child .card,
+.admin-layout-container > .row:first-child .card,
+.internet-detail-layout > .row:first-child .card {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+.main-layout-container > .row:first-child .card .card-body,
+.admin-layout-container > .row:first-child .card .card-body,
+.internet-detail-layout > .row:first-child .card .card-body {
+    flex: 0 0 auto !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
+
+.internet-detail-layout {
+    --card-gap: 0.12rem;
+    gap: var(--card-gap);
+    padding: 0.12rem !important;
+}
+
+
+.internet-detail-layout > .row {
+    gap: 0.12rem;         
+    margin-bottom: 0.08rem; 
+}
+
+
+.internet-detail-layout .g-2 {
+    --bs-gutter-x: 0.12rem !important;
+    --bs-gutter-y: 0.12rem !important;
+}
+
+/* Reduce padding inside cards for tighter packing on the second screen */
+.internet-detail-layout .card .card-body {
+    padding: 0.12rem !important;
+}

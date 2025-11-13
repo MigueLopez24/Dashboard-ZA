@@ -1,0 +1,28 @@
+.internet-speed-icon {
+    width: clamp(10px, 1.2vw, 12px) !important;
+    height: clamp(10px, 1.2vw, 12px) !important;
+    margin-right: 0.125rem !important; 
+    display: inline-block;
+}
+
+.internet-speed-value {
+    color: white;
+    font-size: clamp(0.55rem, 1.2vw, 0.4rem) !important; 
+    font-weight: 500;
+    margin-left: 0.0625rem;
+}
+
+.internet-users-icon {
+    width: clamp(12px, 1.6vw, 14px) !important; 
+    height: clamp(12px, 1.6vw, 14px) !important;
+    margin-right: 0.125rem !important;
+    margin-top: 0.3125rem !important; 
+    display: inline-block;
+}
+
+.internet-users-value {
+    color: white;
+    font-size: clamp(0.6rem, 1.4vw, 0.4rem) !important; 
+    font-weight: 600;
+    margin-left: 0.0625rem;
+}

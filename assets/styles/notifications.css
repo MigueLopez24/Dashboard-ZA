@@ -1,0 +1,28 @@
+.edit-notification {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 9999;
+    max-width: 320px;
+}
+
+/* CRUd notifications */
+.crud-notification-output {
+    position: fixed;
+    top: 1.25rem; 
+    right: 1.25rem; 
+    z-index: 2000;
+    max-width: 360px;
+}
+
+/* On small screens center notifications at top and reduce width */
+@media (max-width: 767px) {
+    .edit-notification,
+    .crud-notification-output {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        top: 0.75rem;
+        max-width: calc(100% - 1.5rem);
+    }
+}
